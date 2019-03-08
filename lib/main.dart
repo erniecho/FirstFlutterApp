@@ -9,24 +9,21 @@ class MyApp extends StatelessWidget {
     //final WordPair wordPair = new WordPair.random(); //this picks a random word value.
     return new MaterialApp(
       title: 'Startup Name Generator',
-      home: new Scaffold(
-        appBar: new AppBar(
-          title: const Text('Welcome to Flutter'),
-        ),
-        body: new Center( //change const to new object.
-          //child: const Text('Hello World'),//remove hello word.
-          //child: new Text(wordPair.asPascalCase), //Generate a text
-          child: new RandomWords(),
-        ),
-      ),
+      home: new RandomWords(),
     );
   }
 }
 
+
+class RandomWords extends StatefulWidget {
+  @override
+  RandomWordsState createState() => new RandomWordsState();
+}
+
 class RandomWordsState extends State<RandomWords> { //What does line State<RandomWords> do?
-  //@override //what does override do in dart?
   final List<WordPair> _suggestions = <WordPair>[];
   final TextStyle _biggerFont = const TextStyle(fontSize: 18.0);
+  @override //what does override do in dart?
   Widget build(BuildContext context) {
     //final WordPair wordPair = new WordPair.random();  //what does final or WordPair do?
     //return new Text(wordPair.asPascalCase);
@@ -60,9 +57,4 @@ class RandomWordsState extends State<RandomWords> { //What does line State<Rando
       ),
     );
   }
-}
-
-class RandomWords extends StatefulWidget {
-  @override
-RandomWordsState createState() => new RandomWordsState();
 }
