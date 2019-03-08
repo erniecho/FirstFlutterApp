@@ -22,6 +22,7 @@ class RandomWords extends StatefulWidget {
 
 class RandomWordsState extends State<RandomWords> { //What does line State<RandomWords> do?
   final List<WordPair> _suggestions = <WordPair>[];
+  final Set<WordPair> _saved = new Set<WordPair>(); // Add this line.
   final TextStyle _biggerFont = const TextStyle(fontSize: 18.0);
   @override //what does override do in dart?
   Widget build(BuildContext context) {
@@ -50,11 +51,25 @@ class RandomWordsState extends State<RandomWords> { //What does line State<Rando
     );
   }
   Widget _buildRow(WordPair pair) {
+    final bool alreadySaved = _saved.contains(pair); //Add this line.
     return new ListTile(
       title: new Text(
         pair.asPascalCase,
         style: _biggerFont,
       ),
+      trailing: new Icon(
+        alreadySaved ? Icons.favorite : Icons.favorite_border,
+        color: alreadySaved ? Colors.red : null,
+      ),
+      onTap: () {
+        setState(() {
+          if (alreadySaved) {
+            _saved.remove(pair);
+          } else {
+            _saved.add(pair);
+          }
+        });
+      },
     );
   }
 }
