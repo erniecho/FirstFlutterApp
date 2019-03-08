@@ -9,6 +9,9 @@ class MyApp extends StatelessWidget {
     //final WordPair wordPair = new WordPair.random(); //this picks a random word value.
     return new MaterialApp(
       title: 'Startup Name Generator',
+      theme: new ThemeData(
+        primaryColor: Colors.white,
+      ),
       home: new RandomWords(),
     );
   }
