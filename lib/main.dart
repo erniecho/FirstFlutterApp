@@ -57,7 +57,13 @@ class RandomWordsState extends State<RandomWords> { //What does line State<Rando
           context: context,
           tiles: tiles,
           )
-          .toList();
+              .toList();
+      return new Scaffold(
+          appBar: new AppBar(
+            title: const Text('Saved Suggestions'),
+          ),
+            body: new ListView(children: divided),
+          );
         },
       ),
     );
